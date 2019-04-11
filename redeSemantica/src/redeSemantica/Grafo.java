@@ -47,12 +47,12 @@ public class Grafo {
         return listaAdj.get(new Vertice(vertice));
     }
     
-    String printGraph() {
-        StringBuffer sb = new StringBuffer();
+    String exibirGrafo() {
+        StringBuffer print = new StringBuffer();
         for(Vertice v : listaAdj.keySet()) {
-            sb.append(v);
-            sb.append(listaAdj.get(v));
+            print.append(v);
+            print.append(listaAdj.get(v));
         }
-        return sb.toString();
+        return print.toString();
     }
 }

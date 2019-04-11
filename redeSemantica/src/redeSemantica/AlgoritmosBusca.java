@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class AlgoritmosBusca {
 	
-	 static Set<String> depthFirstTraversal(Grafo graph, String root) {
+	 static Set<String> buscaProfundidade(Grafo grafo, String root) {
 	        Set<String> visited = new LinkedHashSet<String>();
 	        Stack<String> stack = new Stack<String>();
 	        stack.push(root);
@@ -15,25 +15,25 @@ public class AlgoritmosBusca {
 	            String Vertice = stack.pop();
 	            if (!visited.contains(Vertice)) {
 	                visited.add(Vertice);
-	                for (Vertice v : graph.getAdjVertices(Vertice)) {              
-	                    stack.push(v.label);
+	                for (Vertice v : grafo.getAdjVertices(Vertice)) {              
+	                    stack.push(v.valor);
 	                }
 	            }
 	        }
 	        return visited;
 	    }
 
-	    static Set<String> breadthFirstTraversal(Grafo graph, String root) {
+	    static Set<String> buscaLargura(Grafo grafo, String root) {
 	        Set<String> visited = new LinkedHashSet<String>();
 	        Queue<String> queue = new LinkedList<String>();
 	        queue.add(root);
 	        visited.add(root);
 	        while (!queue.isEmpty()) {
 	            String Vertice = queue.poll();
-	            for (Vertice v : graph.getAdjVertices(Vertice)) {
-	                if (!visited.contains(v.label)) {
-	                    visited.add(v.label);
-	                    queue.add(v.label);
+	            for (Vertice v : grafo.getAdjVertices(Vertice)) {
+	                if (!visited.contains(v.valor)) {
+	                    visited.add(v.valor);
+	                    queue.add(v.valor);
 	                }
 	            }
 	        }

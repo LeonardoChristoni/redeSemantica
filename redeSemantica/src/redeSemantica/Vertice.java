@@ -1,21 +1,21 @@
 package redeSemantica;
 
 public class Vertice {
-	  String label;
-      Vertice(String label) {
-          this.label = label;
+	  String valor;
+      Vertice(String valor) {
+          this.valor = valor;
       }
       @Override
       public boolean equals(Object obj) {
-          Vertice vertex = (Vertice) obj;
-          return vertex.label == label;
+          Vertice vertice = (Vertice) obj;
+          return vertice.valor == valor;
       }
       @Override
       public int hashCode() {
-          return label.hashCode();
+          return valor.hashCode();
       }
       @Override
       public String toString() {
-          return label;
+          return valor;
       }
 }
