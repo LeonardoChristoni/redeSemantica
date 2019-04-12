@@ -3,55 +3,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Grafo {
-	private Map<Vertice, List<Vertice>> listaAdj;
+	private Map<Vertice, List<VerticeAdjacente>> listaAdjacencia;
 
 	Grafo() {
-        this.listaAdj = new HashMap<Vertice, List<Vertice>>();
+        this.listaAdjacencia = new HashMap<Vertice, List<VerticeAdjacente>>();
     }
 
     void adicionarVertice(String valor) {
-    	listaAdj.putIfAbsent(new Vertice(valor), new ArrayList<>());
-    }
-  
-    void removerVertice(String label) {
-    	Vertice v = new Vertice(label);
-    	listaAdj.values().stream().map(e -> e.remove(v)).collect(Collectors.toList());
-    	listaAdj.remove(new Vertice(label));
+    	listaAdjacencia.putIfAbsent(new Vertice(valor), new ArrayList<>());
     }
 
-    void criarAresta(String primeiroVertice, String segundoVertice) {
+    void criarAresta(String primeiroVertice, String segundoVertice, String tipoRelacao) {
     	Vertice v1 = new Vertice(primeiroVertice);
     	Vertice v2 = new Vertice(segundoVertice);
-    	listaAdj.get(v1).add(v2);
-    	listaAdj.get(v2).add(v1);
+    	listaAdjacencia.get(v1).add(new VerticeAdjacente(v2, tipoRelacao));
+ //   	listaAdjacencia.get(v2).add(new VerticeAdjacente(v1, tipoRelacao));
     }
 
-    void removerAresta(String primeiroVertice, String segundoVertice) {
-    	Vertice v1 = new Vertice(primeiroVertice);
-    	Vertice v2 = new Vertice(segundoVertice);
-        List<Vertice> eV1 = listaAdj.get(v1);
-        List<Vertice> eV2 = listaAdj.get(v2);
-        
-        try{
-    	   eV1.remove(v2);
-    	   eV2.remove(v1);
-        }catch(Exception e) {
-        	e.printStackTrace();
-        }
-    }
-
-    List<Vertice> getAdjVertices(String vertice) {
-        return listaAdj.get(new Vertice(vertice));
+    List<VerticeAdjacente> getVerticesAdjacentes(String vertice,String tipoRelacao) {
+    	Vertice v = new Vertice(vertice);
+        VerticeAdjacente va = new VerticeAdjacente(v,tipoRelacao);
+		return listaAdjacencia.get(va);
     }
     
     String exibirGrafo() {
         StringBuffer print = new StringBuffer();
-        for(Vertice v : listaAdj.keySet()) {
-            print.append(v);
-            print.append(listaAdj.get(v));
+        for(Vertice v : listaAdjacencia.keySet()) {
+            print.append(v + "\n");
         }
         return print.toString();
     }
