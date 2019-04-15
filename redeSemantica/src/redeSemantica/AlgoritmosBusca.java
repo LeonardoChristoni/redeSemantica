@@ -31,6 +31,7 @@ public class AlgoritmosBusca {
 //                	 if(segundoVertice.getTipoRelacao().equals("e_um")) {
 //                     	regraRelacao=1;
 //                     	if(!vertice.getTipoRelacao().equals("e_um")) {
+//                			regraRelacao=0;
 //                     		return false;
 //                     	}
 //                     }else if(segundoVertice.getTipoRelacao().equals("tem")) {
@@ -45,11 +46,11 @@ public class AlgoritmosBusca {
 //                }
                 
 	            //caso vertice for o vertice procurado retorna verdadeiro
-	            if(vertice.equals(segundoVertice) && vertice.getTipoRelacao().equals(segundoVertice.getTipoRelacao())){
+	            if(vertice.equals(segundoVertice)){
 //	            	if(regraRelacao == 1) {
-//	            		return true;
+	            		return true;
 //	            	}
-	            	return true;
+	            	//return true;
 	            }
 	            //marca vertice como visitado e empilha os adjacentes
 	            if (!visitados.contains(vertice)) {
@@ -61,22 +62,4 @@ public class AlgoritmosBusca {
 	        }
 	        return false;
 	    }
-
-//
-//	    static Set<String> buscaLargura(Grafo grafo, String root) {
-//	        Set<String> visited = new LinkedHashSet<String>();
-//	        Queue<String> queue = new LinkedList<String>();
-//	        queue.add(root);
-//	        visited.add(root);
-//	        while (!queue.isEmpty()) {
-//	            String Vertice = queue.poll();
-//	            for (Vertice v : grafo.getVerticesAdjacentes(Vertice)) {
-//	                if (!visited.contains(v.valor)) {
-//	                    visited.add(v.valor);
-//	                    queue.add(v.valor);
-//	                }
-//	            }
-//	        }
-//	        return visited;
-//	    }
 }
