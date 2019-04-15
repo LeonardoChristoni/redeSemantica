@@ -1,21 +1,38 @@
 package redeSemantica;
 
 public class Vertice {
-	  String valor;
-      Vertice(String valor) {
-          this.valor = valor;
-      }
-      @Override
-      public boolean equals(Object obj) {
-          Vertice vertice = (Vertice) obj;
-          return vertice.valor == valor;
-      }
-      @Override
-      public int hashCode() {
-          return valor.hashCode();
-      }
-      @Override
-      public String toString() {
-          return valor;
-      }
+	
+	private String valor;
+	private String tipoRelacao;
+	
+	public Vertice(String valor) {
+		this.valor = valor;
+	}
+  
+    public Vertice(String valor,String tipoRelacao){
+	    this.valor = valor;
+	    setTipoRelacao(tipoRelacao);
+    }
+  
+    @Override
+    public boolean equals(Object obj) {
+        Vertice vertice = (Vertice) obj;
+        return vertice.valor.equals(valor);
+    }
+    
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+      
+	public String getTipoRelacao() {
+		return tipoRelacao;
+	}
+	
+	public void setTipoRelacao(String tipoRelacao) {
+		this.tipoRelacao = tipoRelacao;
+	}
 }
